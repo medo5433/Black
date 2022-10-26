@@ -2942,7 +2942,7 @@ end
 local Get_Chat = LuaTele.getChat(msg_chat_id)
 local Info_Chats = LuaTele.getSupergroupFullInfo(msg_chat_id)
 if Redis:sismember(black.."ChekBotAdd",msg_chat_id) then
-if tonumber(Info_Chats.member_count) < tonumber((Redis:get(black..'Num:Add:Bot') or 0)) and not msg.ControllerBot then
+if tonumber(Info_Chats.member_count) < tonumber((Redis:get(black..'Num:Add:Bot') or )) and not msg.ControllerBot then
 return send(msg_chat_id,msg_id,'✧عدد الاعضاء قليل لا يمكن تفعيل الجروب  يجب ان يكوم اكثر من :'..Redis:get(black..'Num:Add:Bot'),"md",true)  
 end
 return send(msg_chat_id,msg_id,'\n*✧الجروب : {*['..Get_Chat.title..']('..Info_Chats.invite_link.invite_link..')*}\n✧تم تفعيلها مسبقا *',"md",true)  
@@ -14460,7 +14460,7 @@ keyboard.inline_keyboard = {
 },
 }
 local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.."&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..Token.."/sendvideo?chat_id=" .. msg_chat_id .. "&video="..video.."&caption=".. URL.escape(T).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 
 elseif text == 'الاوامر' then
 if not msg.Admin then
